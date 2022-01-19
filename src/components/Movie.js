@@ -14,7 +14,7 @@ const Movie = (props) => {
     props.deleteMovie(movie.id);
     console.log("DELETE HERE");
     push("/movies");
-    console.log(push);
+    // console.log(push);
   };
   console.log(props.movies);
 
@@ -23,35 +23,35 @@ const Movie = (props) => {
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h4 className="modal-title">{movie.title} Details</h4>
+            <h4 className="modal-title">{movies.title} Details</h4>
           </div>
           <div className="modal-body">
             <div className="flexContainer">
               <section className="movie-details">
                 <div>
                   <label>
-                    Title: <strong>{movie.title}</strong>
+                    Title: <strong>{movies.title}</strong>
                   </label>
                 </div>
                 <div>
                   <label>
-                    Director: <strong>{movie.director}</strong>
+                    Director: <strong>{movies.director}</strong>
                   </label>
                 </div>
                 <div>
                   <label>
-                    Genre: <strong>{movie.genre}</strong>
+                    Genre: <strong>{movies.genre}</strong>
                   </label>
                 </div>
                 <div>
                   <label>
-                    Metascore: <strong>{movie.metascore}</strong>
+                    Metascore: <strong>{movies.metascore}</strong>
                   </label>
                 </div>
                 <div>
                   <label>Description:</label>
                   <p>
-                    <strong>{movie.description}</strong>
+                    <strong>{movies.description}</strong>
                   </p>
                 </div>
               </section>
