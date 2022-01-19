@@ -9,55 +9,58 @@ const Movie = (props) => {
   const { push } = useHistory();
 
   const movies = props.movies;
+  const displayFavorites = props.displayFavorites;
   const movie = movies.find((movie) => movie.id === Number(id));
   const handleDeleteMovie = () => {
     props.deleteMovie(movie.id);
-    console.log("DELETE HERE");
+    // console.log("DELETE HERE");
     push("/movies");
     // console.log(push);
   };
-  console.log(props.movies);
 
   return (
     <div className="modal-page col">
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h4 className="modal-title">{movies.title} Details</h4>
+            <h4 className="modal-title">{movie.title} Details</h4>
           </div>
           <div className="modal-body">
             <div className="flexContainer">
               <section className="movie-details">
                 <div>
                   <label>
-                    Title: <strong>{movies.title}</strong>
+                    Title: <strong>{movie.title}</strong>
                   </label>
                 </div>
                 <div>
                   <label>
-                    Director: <strong>{movies.director}</strong>
+                    Director: <strong>{movie.director}</strong>
                   </label>
                 </div>
                 <div>
                   <label>
-                    Genre: <strong>{movies.genre}</strong>
+                    Genre: <strong>{movie.genre}</strong>
                   </label>
                 </div>
                 <div>
                   <label>
-                    Metascore: <strong>{movies.metascore}</strong>
+                    Metascore: <strong>{movie.metascore}</strong>
                   </label>
                 </div>
                 <div>
                   <label>Description:</label>
                   <p>
-                    <strong>{movies.description}</strong>
+                    <strong>{movie.description}</strong>
                   </p>
                 </div>
               </section>
 
               <section>
-                <span className="m-2 btn btn-dark">Favorite</span>
+                {displayFavorites && (
+                  <span className="m-2 btn btn-dark">Favorite</span>
+                )}
+
                 <span className="delete">
                   <input
                     type="button"
@@ -75,8 +78,10 @@ const Movie = (props) => {
   );
 };
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    movies: state.movies,
+    displayFavorites: state.favoritesReducer.displayFavorites,
+    movies: state.movieReducer.movies,
   };
 };
 
